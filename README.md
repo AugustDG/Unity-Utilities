@@ -1,5 +1,11 @@
+## Changelog (1-12-2020 // ~8:50)
+ - Changed solution and project name
+ - Added some instructions to the README =D
+
 # Unity Utilities
  Utilities to improve the C# experience in Unity: ranging from extension methods to shorter code length.
+ 
+ For now to use this library, you need to copy the repo (or download it) and build a .dll file in Visual Studio, Jetbrains Rider or any .NET IDE, to then add it to your Unity project! Alternatively, you can also copy all the scripts in your project and add the namespaces where you need them :)
  
 # Extension Methods
 
