@@ -1,8 +1,10 @@
-﻿using UnityEngine;
+﻿using System;
+using UnityEngine;
+using Object = UnityEngine.Object;
 
 namespace Utilities.Extensions
 {
-    internal static class UnityExtensions
+    public static class UnityExtensions
     {
         /// <summary> 
         /// More elegant way of writing Destroy(gameObject).
@@ -15,43 +17,70 @@ namespace Utilities.Extensions
         //TODO: Reduce to single function for all vector types
         
         /// <summary> 
-        /// Returns the corresponding unit vector to the given angle (in degrees).
+        /// Returns the corresponding vector to the given angle (in degrees).
+        /// <param name="magnitude"> Desired vector magnitude. </param>
         /// </summary>
-        public static Vector2 Vectorize(this float angle, float magnitude = 1f)
+        public static Vector2 VectorFromAngleDeg(this ValueType angle, float magnitude = 1f)
         {
-            return new Vector2(Mathf.Cos(angle * Mathf.Deg2Rad), Mathf.Sin(angle * Mathf.Deg2Rad))*magnitude;
+            return new Vector2(Mathf.Cos((float)angle * Mathf.Deg2Rad), Mathf.Sin((float)angle * Mathf.Deg2Rad))*magnitude;
         }
         
         /// <summary> 
-        /// Returns the corresponding unit vector to the given angle (in degrees).
+        /// Returns the corresponding vector to the given angle (in radians).
+        /// <param name="magnitude"> Desired vector magnitude. </param>
         /// </summary>
-        public static Vector2 Vectorize(this int angle, int magnitude = 1)
+        public static Vector2 VectorFromAngleRad(this ValueType angle, float magnitude = 1f)
         {
-            return new Vector2(Mathf.Cos(angle * Mathf.Deg2Rad), Mathf.Sin(angle * Mathf.Deg2Rad))*magnitude;
+            return new Vector2(Mathf.Cos((float)angle), Mathf.Sin((float)angle))*magnitude;
         }
 
         /// <summary> 
-        /// Returns the positive angle in degrees of given Vector2. This method assumes +X axis is 0 degrees. 
+        /// Returns the positive angle in degrees of given Vector2. This method assumes +X axis is 0 degrees.
         /// </summary>
         /// <param name="vector2"></param>
-        /// <param name="angleOffset"></param>
-        public static float Rotation(this Vector2 vector2, float angleOffset = 0f)
+        /// <param name="angleOffset"> In degrees. </param>
+        public static float AngleFromVectorDeg(this Vector2 vector2, float angleOffset = 0f)
         {
             return Mathf.Atan2(vector2.y, vector2.x) * Mathf.Rad2Deg + angleOffset;
         }
+        
+        /// <summary> 
+        /// Returns the positive angle in radians of given Vector2. This method assumes +X axis is 0 degrees. 
+        /// </summary>
+        /// <param name="vector2"></param>
+        /// <param name="angleOffset"> In degrees. </param>
+        public static float AngleFromVectorRad(this Vector2 vector2, float angleOffset = 0f)
+        {
+            return Mathf.Atan2(vector2.y, vector2.x) + angleOffset * Mathf.Deg2Rad;
+        }
 
         /// <summary> 
-        /// Rotates the Vector2 by given angle. 
+        /// Rotates the Vector2 by the given angle (in degrees).
+        /// <param name="angle"> In degrees. </param>
         /// </summary>
-        public static Vector2 Rotate(this Vector2 v, float degrees)
+        public static Vector2 RotateByAngleDeg(this ref Vector2 v, float angle)
         {
-            float sin = Mathf.Sin(degrees * Mathf.Deg2Rad);
-            float cos = Mathf.Cos(degrees * Mathf.Deg2Rad);
+            float x = Mathf.Cos((angle + v.AngleFromVectorDeg()) * Mathf.Deg2Rad) * v.magnitude;
+            float y = Mathf.Sin((angle + v.AngleFromVectorDeg()) * Mathf.Deg2Rad) * v.magnitude;
 
-            float tx = v.x;
-            float ty = v.y;
-            v.x = (cos * tx) - (sin * ty);
-            v.y = (sin * tx) + (cos * ty);
+            v.x = x;
+            v.y = y;
+            
+            return v;
+        }
+        
+        /// <summary> 
+        /// Rotates the Vector2 by the given angle (in radians).
+        /// <param name="angle"> In radians. </param>
+        /// </summary>
+        public static Vector2 RotateByAngleRad(this ref Vector2 v, float angle)
+        {
+            float x = Mathf.Cos(angle + v.AngleFromVectorRad()) * v.magnitude;
+            float y = Mathf.Sin(angle + v.AngleFromVectorRad()) * v.magnitude;
+
+            v.x = x;
+            v.y = y;
+            
             return v;
         }
         

@@ -1,18 +1,17 @@
 using System;
 using JetBrains.Annotations;
 using UnityEngine;
-using Utilities.Exceptions;
 
 namespace Utilities.Extensions
 {
-    enum LogTypes
+    public enum LogTypes
     {
         Message,
         Warning,
         Error
     }
     
-    internal static class CsExtensions
+    public static class CsExtensions
     {
         /// <summary>
         ///     Writes the string to the Console.
@@ -22,6 +21,7 @@ namespace Utilities.Extensions
         /// <returns></returns>
         public static void Print(this string msg, LogTypes type = LogTypes.Message)
         {
+#if UNITY_EDITOR
             switch (type)
             {
                 case LogTypes.Message:
@@ -34,6 +34,9 @@ namespace Utilities.Extensions
                     Debug.LogError(msg);
                     break;
             }
+#else
+            Console.WriteLine(msg);            
+#endif
         }
         
         /// <summary>
@@ -52,7 +55,7 @@ namespace Utilities.Extensions
         /// </summary>
         /// <param name="numb"></param>
         /// <returns></returns>
-        public static ValueType Abs<T>([NotNull] this T numb)
+        public static ValueType Abs<T>([NotNull] this ValueType numb)
         {
             try
             {

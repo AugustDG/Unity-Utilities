@@ -13,7 +13,7 @@
   <component name="HighlightingSettingsPerFile">
     <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/DecompilerCache/decompiler/D195DA47-F292-4AA6-AB1F-FC82F421F850/9a/cd020d1a/ValueType.cs" root0="SKIP_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/UnityExtensions.cs" root0="FORCE_HIGHLIGHTING" />
-    <setting file="file://$PROJECT_DIR$/CSExtensions.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/CsExtensions.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Exceptions.cs" root0="FORCE_HIGHLIGHTING" />
   </component>
   <component name="IdeDocumentHistory">
@@ -22,8 +22,11 @@
         <option value="$PROJECT_DIR$/MonoBehaviour1.cs" />
         <option value="$PROJECT_DIR$/ExtensionMethods.cs" />
         <option value="$PROJECT_DIR$/Exceptions.cs" />
+        <option value="$APPLICATION_CONFIG_DIR$/scratches/scratch.cs" />
         <option value="$PROJECT_DIR$/CSExtensions.cs" />
         <option value="$PROJECT_DIR$/UnityExtensions.cs" />
+        <option value="$PROJECT_DIR$/README.md" />
+        <option value="$PROJECT_DIR$/CsExtensions.cs" />
       </list>
     </option>
   </component>
@@ -37,6 +40,7 @@
     <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
     <property name="TWShift.4" value="true" />
     <property name="WebServerToolWindowFactoryState" value="false" />
+    <property name="com.intellij.ide.scratch.LRUPopupBuilder$1/New Scratch File" value="C#" />
     <property name="settings.editor.selected.configurable" value="settings.github" />
   </component>
   <component name="RunManager" selected="Attach to Unity Editor.Attach to Unity Editor">
@@ -76,7 +80,8 @@
       <option name="presentableId" value="Default" />
       <updated>1578864459987</updated>
       <workItem from="1578864462492" duration="5837000" />
-      <workItem from="1578871219467" duration="510000" />
+      <workItem from="1578871219467" duration="4778000" />
+      <workItem from="1578877231499" duration="2308000" />
     </task>
     <servers />
   </component>
@@ -87,7 +92,9 @@
       <map>
         <entry key="MAIN">
           <value>
-            <State />
+            <State>
+              <option name="COLUMN_ORDER" />
+            </State>
           </value>
         </entry>
       </map>
@@ -102,6 +109,10 @@
       <screen x="0" y="40" width="2560" height="1040" />
     </state>
     <state x="1142" y="454" width="538" height="212" key="Github.ShareDialog/0.40.2560.1040@0.40.2560.1040" timestamp="1578871523811" />
+    <state x="872" y="292" key="Rider.ProjectTemplateDialog.Size" timestamp="1578875399700">
+      <screen x="0" y="40" width="2560" height="1040" />
+    </state>
+    <state x="872" y="292" key="Rider.ProjectTemplateDialog.Size/0.40.2560.1040@0.40.2560.1040" timestamp="1578875399700" />
     <state x="781" y="203" key="SettingsEditor" timestamp="1578871286030">
       <screen x="0" y="40" width="2560" height="1040" />
     </state>
