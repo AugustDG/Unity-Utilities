@@ -35,7 +35,18 @@ namespace Utilities.Extensions
                     break;
             }
 #else
-            Console.WriteLine(msg);            
+            switch (type)
+            {
+                case LogTypes.Message:
+                    Console.WriteLine($"Message: {msg}");  
+                    break;
+                case LogTypes.Warning:
+                    Console.WriteLine($"WARNING: {msg}");  
+                    break;
+                case LogTypes.Error:
+                    Console.Error.WriteLine(msg);  
+                    break;
+            }
 #endif
         }
         
@@ -43,11 +54,20 @@ namespace Utilities.Extensions
         ///     Rounds float and returns int.
         /// </summary>
         /// <param name="numb"></param>
-        /// <param name="decimalPlaces"></param>
         /// <returns></returns>
-        public static int Round(this float numb, int decimalPlaces = 2)
+        public static int RoundToInt(this float numb)
         {
             return Mathf.RoundToInt(numb);
+        }
+        
+        /// <summary>
+        ///     Rounds double and returns int.
+        /// </summary>
+        /// <param name="numb"></param>
+        /// <returns></returns>
+        public static int RoundToInt(this double numb)
+        {
+            return Mathf.RoundToInt((float)numb);
         }
 
         /// <summary>

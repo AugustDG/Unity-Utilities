@@ -2,10 +2,10 @@
 
 namespace Utilities.Exceptions
 {
-    public class InvalidType : Exception
+    public class InvalidTypeException : Exception
     {
-        public InvalidType() {}
+        public InvalidTypeException() {}
         
-        public InvalidType(string type):base(String.Format("Invalid type, received {0}", type)) {}
+        public InvalidTypeException(string received):base($"Invalid type, received: {received}") {}
     }
 }
