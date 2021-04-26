@@ -1,17 +1,48 @@
 ﻿using System;
+using System.Collections;
 using UnityEngine;
 using Object = UnityEngine.Object;
 
 namespace Utilities.Extensions
 {
+    public enum LogTypes
+    {
+        Message,
+        Warning,
+        Error
+    }
+
     public static class UnityExtensions
     {
+        /// <summary> 
+        /// Delays action by specified number of seconds
+        /// </summary>
+        public static Coroutine DelayAction(MonoBehaviour monoBehaviour, Action delayedAction, float timeInSec)
+        {
+            return monoBehaviour.StartCoroutine(DelayActionRoutine(delayedAction, timeInSec));
+        }
+
+        private static IEnumerator DelayActionRoutine(Action delayedAction, float timeInSec)
+        {
+            yield return new WaitForSecondsRealtime(timeInSec);
+            
+            delayedAction.Invoke();
+        }
+        
         /// <summary> 
         /// More elegant way of writing Destroy(gameObject).
         /// </summary>
         public static void Destroy(this GameObject go)
         {
             Object.Destroy(go);
+        }
+        
+        /// <summary> 
+        /// More elegant way of writing DestroyImmediate(gameObject).
+        /// </summary>
+        public static void DestroyImmediate(this GameObject go)
+        {
+            Object.DestroyImmediate(go);
         }
 
         /// <summary> 
@@ -24,7 +55,7 @@ namespace Utilities.Extensions
         {
             // Homing behaviour from: https://github.com/Brackeys/Homing-Missile/blob/master/Homing%20Missile/Assets/HomingMissile.cs
 
-            var direction = (Vector2)Camera.current.ScreenToWorldPoint(Input.mousePosition) - rb.position;
+            var direction = (Vector2) Camera.current.ScreenToWorldPoint(Input.mousePosition) - rb.position;
 
             var localUp = rb.transform.up;
 
@@ -36,7 +67,7 @@ namespace Utilities.Extensions
 
             rb.velocity = localUp * speed;
         }
-        
+
         /// <summary> 
         /// Smoothly makes the Rigidbody2D follow the specified object.
         /// Should be used in FixedUpdate (recommended).
@@ -44,11 +75,12 @@ namespace Utilities.Extensions
         /// <param name="speed">Follow speed.</param>
         /// <param name="rotateSpeed">Turning speed.</param>
         /// </summary>
-        public static void FollowObject2D(this Rigidbody2D rb, GameObject go, float speed = 5f, float rotateSpeed = 200f)
+        public static void FollowObject2D(this Rigidbody2D rb, GameObject go, float speed = 5f,
+            float rotateSpeed = 200f)
         {
             // Homing behaviour from: https://github.com/Brackeys/Homing-Missile/blob/master/Homing%20Missile/Assets/HomingMissile.cs
 
-            var direction = (Vector2)go.transform.position - rb.position;
+            var direction = (Vector2) go.transform.position - rb.position;
 
             var localUp = rb.transform.up;
 
@@ -60,7 +92,7 @@ namespace Utilities.Extensions
 
             rb.velocity = localUp * speed;
         }
-        
+
         /// <summary> 
         /// Smoothly makes the Rigidbody2D follow the specified transform.
         /// Should be used in FixedUpdate (recommended).
@@ -68,11 +100,12 @@ namespace Utilities.Extensions
         /// <param name="speed">Follow speed.</param>
         /// <param name="rotateSpeed">Turning speed.</param>
         /// </summary>
-        public static void FollowObject2D(this Rigidbody2D rb, Transform trans, float speed = 5f, float rotateSpeed = 200f)
+        public static void FollowObject2D(this Rigidbody2D rb, Transform trans, float speed = 5f,
+            float rotateSpeed = 200f)
         {
             // Homing behaviour from: https://github.com/Brackeys/Homing-Missile/blob/master/Homing%20Missile/Assets/HomingMissile.cs
 
-            var direction = (Vector2)trans.position - rb.position;
+            var direction = (Vector2) trans.position - rb.position;
 
             var localUp = rb.transform.up;
 
@@ -186,8 +219,8 @@ namespace Utilities.Extensions
         /// </summary>
         public static Vector2 RotateByAngleDeg(this ref Vector2 v, float angle)
         {
-            float x = Mathf.Cos((angle + v.AngleFromVectorDeg()) * Mathf.Deg2Rad) * v.magnitude;
-            float y = Mathf.Sin((angle + v.AngleFromVectorDeg()) * Mathf.Deg2Rad) * v.magnitude;
+            var x = Mathf.Cos((angle + v.AngleFromVectorDeg()) * Mathf.Deg2Rad) * v.magnitude;
+            var y = Mathf.Sin((angle + v.AngleFromVectorDeg()) * Mathf.Deg2Rad) * v.magnitude;
 
             v.x = x;
             v.y = y;
@@ -201,8 +234,8 @@ namespace Utilities.Extensions
         /// </summary>
         public static Vector2 RotateByAngleRad(this ref Vector2 v, float angle)
         {
-            float x = Mathf.Cos(angle + v.AngleFromVectorRad()) * v.magnitude;
-            float y = Mathf.Sin(angle + v.AngleFromVectorRad()) * v.magnitude;
+            var x = Mathf.Cos(angle + v.AngleFromVectorRad()) * v.magnitude;
+            var y = Mathf.Sin(angle + v.AngleFromVectorRad()) * v.magnitude;
 
             v.x = x;
             v.y = y;
@@ -216,7 +249,7 @@ namespace Utilities.Extensions
         /// <param name="vector3"></param>
         /// <param name="decimalPlaces"></param>
         /// <returns></returns>
-        public static Vector3 Round(this Vector3 vector3, int decimalPlaces = 2)
+        public static Vector3 Round(this Vector3 vector3, int decimalPlaces)
         {
             float multiplier = 1;
             for (var i = 0; i < decimalPlaces; i++) multiplier *= 10f;
@@ -227,18 +260,224 @@ namespace Utilities.Extensions
         }
 
         /// <summary>
+        ///     Clamps Vector3 components between provided values.
+        /// </summary>
+        /// <param name="vector3"></param>
+        /// <param name="min"></param>
+        /// <param name="max"></param>
+        /// <returns></returns>
+        public static Vector3 Clamp(this Vector3 vector3, float min, float max)
+        {
+            return new Vector3(
+                Mathf.Clamp(vector3.x, min, max),
+                Mathf.Clamp(vector3.y, min, max),
+                Mathf.Clamp(vector3.z, min, max));
+        }
+
+        /// <summary>
+        ///     Clamps Vector3 components between 0 and 1.
+        /// </summary>
+        /// <param name="vector3"></param>
+        /// <returns></returns>
+        public static Vector3 Clamp(this Vector3 vector3)
+        {
+            return new Vector3(
+                Mathf.Clamp01(vector3.x),
+                Mathf.Clamp01(vector3.y),
+                Mathf.Clamp01(vector3.z));
+        }
+
+        /// <summary>
+        ///     Rounds Vector3.
+        ///     Returns Vector3Int.    
+        /// </summary>
+        /// <param name="vector3"></param>
+        /// <returns></returns>
+        public static Vector3Int Round(this Vector3 vector3)
+        {
+            return new Vector3Int(
+                vector3.x.RoundToInt(),
+                vector3.y.RoundToInt(),
+                vector3.z.RoundToInt());
+        }
+
+        /// <summary>
+        ///     Transforms a Vector2 to a Vector3 with Unity's (x, z) 2D coordinate system in mind.
+        /// </summary>
+        /// <param name="vector2"></param>
+        /// <returns></returns>
+        public static Vector3 TransformTo2DVector3(this Vector2 vector2)
+        {
+            return new Vector3(vector2.x, 0, vector2.y);
+        }
+
+        /// <summary>
+        ///     Chops a Vector3 to a Vector3 with Unity's (x, z) 2D coordinate system in mind.
+        /// </summary>
+        /// <param name="vector3"></param>
+        /// <returns></returns>
+        public static Vector3 ChopTo2DVector3(this Vector3 vector3, float y = 0f)
+        {
+            return new Vector3(vector3.x, y, vector3.z );
+        }
+
+        /// <summary>
         ///     Rounds Vector2.
         /// </summary>
         /// <param name="vector2"></param>
         /// <param name="decimalPlaces"></param>
         /// <returns></returns>
-        public static Vector2 Round(this Vector2 vector2, int decimalPlaces = 2)
+        public static Vector2 Round(this Vector2 vector2, int decimalPlaces)
         {
-            float multiplier = 1;
+            var multiplier = 1f;
             for (var i = 0; i < decimalPlaces; i++) multiplier *= 10f;
             return new Vector2(
                 Mathf.Round(vector2.x * multiplier) / multiplier,
                 Mathf.Round(vector2.y * multiplier) / multiplier);
+        }
+
+        /// <summary>
+        ///     Rounds Vector2.
+        ///     Returns Vector2Int.
+        /// </summary>
+        /// <param name="vector2"></param>
+        /// <returns></returns>
+        public static Vector2Int Round(this Vector2 vector2)
+        {
+            return new Vector2Int(
+                vector2.x.RoundToInt(),
+                vector2.y.RoundToInt());
+        }
+
+        /// <summary>
+        ///     Writes the string to the Console.
+        /// </summary>
+        /// <param name="msg">String to be written.</param>
+        /// <param name="type">Type of .</param>
+        /// <returns></returns>
+        public static void Print(this string msg, LogTypes type = LogTypes.Message)
+        {
+            switch (type)
+            {
+                case LogTypes.Message:
+                    Debug.Log(msg);
+                    break;
+                case LogTypes.Warning:
+                    Debug.LogWarning(msg);
+                    break;
+                case LogTypes.Error:
+                    Debug.LogError(msg);
+                    break;
+            }
+        }
+
+        /// <summary>
+        ///     Rounds float and returns float according to the number of decimal places supplied.
+        /// </summary>
+        /// <param name="numb"></param>
+        /// <param name="decimalPlaces">Number of decimals after the period.</param>
+        /// <returns></returns>
+        public static float Round(this float numb, int decimalPlaces)
+        {
+            var multiplier = 1f;
+            for (var i = 0; i < decimalPlaces; i++) multiplier *= 10f;
+            return Mathf.Round(numb * multiplier) / multiplier;
+        }
+        
+        /// <summary>
+        ///     Rounds float and returns float.
+        /// </summary>
+        /// <param name="numb"></param>
+        /// <returns></returns>
+        public static float Round(this float numb)
+        {
+            return Mathf.Round(numb);
+        }
+
+        /// <summary>
+        ///     Rounds float and returns int.
+        /// </summary>
+        /// <param name="numb"></param>
+        /// <returns></returns>
+        public static int RoundToInt(this float numb)
+        {
+            return Mathf.RoundToInt(numb);
+        }
+
+        /// <summary>
+        ///     Rounds double and returns int.
+        /// </summary>
+        /// <param name="numb"></param>
+        /// <returns></returns>
+        public static int RoundToInt(this double numb)
+        {
+            return Mathf.RoundToInt((float) numb);
+        }
+
+        /// <summary>
+        ///      Clamps float between provided values.
+        /// </summary>
+        /// <param name="numb"></param>
+        /// <param name="min">Lower bound.</param>
+        /// <param name="max">Upper bound.</param>
+        /// <returns></returns>
+        public static float Clamp(this float numb, float min, float max)
+        {
+            return Mathf.Clamp(numb, min, max);
+        }
+
+        /// <summary>
+        ///      Clamps float between 0 and 1.
+        /// </summary>
+        /// <param name="numb"></param>
+        /// <returns></returns>
+        public static float Clamp(this float numb)
+        {
+            return Mathf.Clamp01(numb);
+        }
+        
+        /// <summary>
+        ///     Maps the supplied value and range to the desired range. <br/>
+        ///     Returns -1 if supplied value is out of supplied range. <br/>
+        ///     Exact function from <a href="https://forum.unity.com/threads/re-map-a-number-from-one-range-to-another.119437/#post-800377">here</a>: 
+        /// </summary>
+        /// <param name="value"></param>
+        /// <param name="from1">Start of range of supplied value. </param>
+        /// <param name="to1">End of range of supplied value.</param>
+        /// <param name="from2">Start of desired range.</param>
+        /// <param name="to2">End of desired range.</param>
+        /// <returns></returns>
+        public static float Map (this float value, float from1, float to1, float from2, float to2)
+        {
+
+            //if (value < from1 || value > to1) return -1;
+            
+            return (value - from1) / (to1 - from1) * (to2 - from2) + from2;
+        }
+
+        /// <summary>
+        ///     Returns the absolute value.
+        /// </summary>
+        /// <param name="numb"></param>
+        /// <returns></returns>
+        public static ValueType Abs<T>(this T numb)
+        {
+            try
+            {
+                switch (numb)
+                {
+                    case float f:
+                        return Mathf.Abs(f);
+                    case int i:
+                        return Mathf.Abs(i);
+                }
+            }
+            catch (Exception e)
+            {
+                e.Message.Print(LogTypes.Error);
+            }
+
+            return null;
         }
     }
 }

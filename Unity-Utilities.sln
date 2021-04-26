@@ -1,0 +1,16 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Unity-Utilities", "Unity-Utilities.csproj", "{05543BB2-461E-494A-8480-5FA19AAFDECE}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{05543BB2-461E-494A-8480-5FA19AAFDECE}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{05543BB2-461E-494A-8480-5FA19AAFDECE}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{05543BB2-461E-494A-8480-5FA19AAFDECE}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{05543BB2-461E-494A-8480-5FA19AAFDECE}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+EndGlobal

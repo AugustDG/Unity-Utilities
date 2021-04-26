@@ -1,10 +1,20 @@
 # Unity Utilities
 
-Utilities to improve the C# experience in Unity: ranging from extension methods to shorter code length.
+Utilities to improve the C# experience in Unity: ranging from more capabilities to shorter code length.
 
-For now to use this library, you need to copy the repo (or download it) and build a .dll file in Visual Studio,
+For now, to use this library, you need to copy the repo (or download it) and build a .dll file in Visual Studio,
 Jetbrains Rider or any .NET IDE, to then add it to your Unity project! Alternatively, you can also copy all the scripts
 in your project :) Don't forget to add the `Utilities` namespace!
+
+Cleaning and refactoring needs to be done as the number of extension methods are growing!
+
+##Todo
+
+- Cleanup and refactor
+  - Separate into files depending on what it extends
+  - Group similar and overloaded functions together
+  
+- Add more :D
 
 # Extensions
 
@@ -14,7 +24,10 @@ in your project :) Don't forget to add the `Utilities` namespace!
 
 ## Float
 
+- `Round` > Rounds float and returns float; number of decimals can be specified.
 - `RoundToInt` > Rounds float and returns int.
+- `Clamp` > Clamps float to the supplied range.
+- `Map` > Maps a float from the supplied range to the supplied range.
 
 ## Double
 
@@ -41,14 +54,34 @@ in your project :) Don't forget to add the `Utilities` namespace!
   degrees.
 - `AngleFromVectorDeg` > Returns the positive angle in radians of given Vector2. This method assumes +X axis is 0
   degrees.
-- `Round` > Rounds Vector2 and Vector3
+- `Round` > Rounds Vector2, Vector3 and can return Vector2Int when parameterless.
+- `Clamp` > Clamps the components of the Vector3 between supplied values
+- `TransformTo2DVector3` > Transforms Vector2 into Vector3 respecting Unity's coordinate system (so x = x, y = 0, z = y).
+- `ChopTo2DVector3` > Takes and returns a Vector3 respecting Unity's coordinate system (so x = x, y = 0 (or specified), z = y).
 
 # Code Shorteners
 
 - `Print` > Cleaner way of Debug.Log() with message type support
+- `DelayAction` > Delays supplied action by specified number of seconds (float).
 - `Destroy` > More elegant way of writing Destroy(gameObject).
+- `DestroyImmediate` > More elegant way of writing DestroyImmediate(gameObject).
 
 ## Logs
+
+### Changelog (25-04-2021)
+
+Will probably remove the ValueType function as it can be used with a variety of things and can therefore introduce bugs 😅
+
+- Added `DelayAction`
+- Added `DestroyImmediate`
+- Added `Clamp` (for vectors and floats)
+- Added `TransformTo2DVector3`
+- Added `ChopTo2DVector3`
+- Added `Map`
+- Moved all `CsExtensions.cs` functions into UnityExtensions as this is a Unity only extension "pack"
+- `Round` now returns Vector3Int and Vector2Int when paramaterless
+- Simplified use `FollowMouse2D` and `FollowObject2D`
+- Replaced specific value types for `var`
 
 ### Changelog (1-01-2021)
 
