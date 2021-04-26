@@ -8,7 +8,7 @@ in your project :) Don't forget to add the `Utilities` namespace!
 
 Cleaning and refactoring needs to be done as the number of extension methods are growing!
 
-##Todo
+## Todo
 
 - Cleanup and refactor
   - Separate into files depending on what it extends
