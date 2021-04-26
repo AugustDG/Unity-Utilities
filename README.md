@@ -6,7 +6,7 @@ For now, to use this library, you need to copy the repo (or download it) and bui
 Jetbrains Rider or any .NET IDE, to then add it to your Unity project! Alternatively, you can also copy all the scripts
 in your project :) Don't forget to add the `Utilities` namespace!
 
-##Todo
+## Todo
 
 | Cleanup and refactor | Done? |
 | :--- | :---: |
