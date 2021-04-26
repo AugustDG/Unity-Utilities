@@ -6,56 +6,46 @@ For now, to use this library, you need to copy the repo (or download it) and bui
 Jetbrains Rider or any .NET IDE, to then add it to your Unity project! Alternatively, you can also copy all the scripts
 in your project :) Don't forget to add the `Utilities` namespace!
 
-Cleaning and refactoring needs to be done as the number of extension methods are growing!
-
 ##Todo
 
-- Cleanup and refactor
-  - Separate into files depending on what it extends
-  - Group similar and overloaded functions together
+| Cleanup and refactor | Done? |
+| :--- | :---: |
+| Separate into files depending on what it extends | ✔ | 
+| Group similar and overloaded functions together  | ✔ |
   
 - Add more :D
 
 # Extensions
 
-## Numerals : takes any type of number (float, int, double) and returns it in the same type
-
-- `Abs` > Returns the absolute value.
-
-## Float
+## Numerals
 
 - `Round` > Rounds float and returns float; number of decimals can be specified.
 - `RoundToInt` > Rounds float and returns int.
-- `Clamp` > Clamps float to the supplied range.
-- `Map` > Maps a float from the supplied range to the supplied range.
-
-## Double
-
-- `RoundToInt` > Rounds double and returns int.
+- `Abs` > Returns the absolute value (of ints and floats).
+- `Clamp` > Clamps float or int to the supplied range.
+- `Map` > Maps a float from the supplied range to the supplied range (for floats and ints).
 
 ## GameObject
 
-- `GoUp` > Smoothly translates the gameobject up at the desired speed (float).
-- `GoDown` > Smoothly translates the gameobject down at the desired speed (float).
-- `GoLeft` > Smoothly translates the gameobject left at the desired speed (float).
-- `GoRight` > Smoothly translates the gameobject right at the desired speed (float).
-- `GoForward` > Smoothly translates the gameobject forward at the desired speed (float).
-- `GoBackward` > Smoothly translates the gameobject backward at the desired speed (float).
+- `GoUp` > Smoothly translates the gameobject (or transform) up at the desired speed (float).
+- `GoDown` > Smoothly translates the gameobject (or transform) down at the desired speed (float).
+- `GoLeft` > Smoothly translates the gameobject (or transform) left at the desired speed (float).
+- `GoRight` > Smoothly translates the gameobject (or transform) right at the desired speed (float).
+- `GoForward` > Smoothly translates the gameobject (or transform) forward at the desired speed (float).
+- `GoBackward` > Smoothly translates the gameobject (or transform) backward at the desired speed (float).
 - `FollowMouse2D` > Smoothly makes the Rigidbody2D follow the mouse position at the desired speeds (float, float);
 - `FollowObject2D` > Smoothly makes the Rigidbody2D follow the specified object (or transform) at the desired speeds (float, float);
 
 ## Vectors
 
-- `VectorFromAngleRad` > Returns the corresponding vector to the given angle (in radians).
-- `VectorFromAngleDeg` > Returns the corresponding vector to the given angle (in degrees).
-- `RotateByAngleRad` > Rotates the Vector2 by the given angle (in radians).
-- `RotateByAngleDeg` > Rotates the Vector2 by the given angle (in degrees).
-- `AngleFromVectorRad` > Returns the positive angle in degrees of given Vector2. This method assumes +X axis is 0
-  degrees.
-- `AngleFromVectorDeg` > Returns the positive angle in radians of given Vector2. This method assumes +X axis is 0
-  degrees.
-- `Round` > Rounds Vector2, Vector3 and can return Vector2Int when parameterless.
-- `Clamp` > Clamps the components of the Vector3 between supplied values
+- `Round` > Rounds Vector2, Vector3 and returns a rounded vector with the specified number of decimals.
+- `RoundToInt` > Rounds Vector2, Vector3 and returns Vector2Int.
+- `Clamp` > Clamps the components of the Vector3 between supplied values.
+- `VectorFromAngle` > Returns the corresponding vector to the given angle (in degrees or radians).
+- `RotateByAngle` > Rotates the Vector2 by the given angle (in degress or radians). This method assumes +X axis is 0
+  degrees/radians.
+- `AngleFromVector` > Returns the positive angle in degrees (or radians) of given Vector2. This method assumes +X axis is 0
+  degrees/radians.
 - `TransformTo2DVector3` > Transforms Vector2 into Vector3 respecting Unity's coordinate system (so x = x, y = 0, z = y).
 - `ChopTo2DVector3` > Takes and returns a Vector3 respecting Unity's coordinate system (so x = x, y = 0 (or specified), z = y).
 
@@ -66,7 +56,15 @@ Cleaning and refactoring needs to be done as the number of extension methods are
 - `Destroy` > More elegant way of writing Destroy(gameObject).
 - `DestroyImmediate` > More elegant way of writing DestroyImmediate(gameObject).
 
-## Logs
+## Log
+
+### Changelog (26-04-2021)
+
+- Removed `ValueType` method
+- Changed all angle related methods to a single one for each use case, i.e. you now have to specify what unit of measure you are using :)
+- All of the `GoUp`, `GoDown`, etc. methods can now be directly used for Transforms as well
+- Separated each extension-related methods in their respective files (Numerals, GameObject, Vector, Unity (= Misc.))
+- Removed `double` methods as it's rarely used in Unity
 
 ### Changelog (25-04-2021)
 
