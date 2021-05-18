@@ -17,7 +17,7 @@ namespace Utilities.Extensions
                 vector3.y.RoundToInt(),
                 vector3.z.RoundToInt());
         }
-        
+
         /// <summary>
         ///     Rounds Vector3 to the specified number of decimals.
         /// </summary>
@@ -46,7 +46,7 @@ namespace Utilities.Extensions
                 Mathf.Clamp01(vector3.y),
                 Mathf.Clamp01(vector3.z));
         }
-        
+
         /// <summary>
         ///     Clamps Vector3 components between provided values.
         /// </summary>
@@ -61,7 +61,7 @@ namespace Utilities.Extensions
                 Mathf.Clamp(vector3.y, min, max),
                 Mathf.Clamp(vector3.z, min, max));
         }
-        
+
         /// <summary>
         ///     Rounds Vector2.
         /// </summary>
@@ -102,7 +102,7 @@ namespace Utilities.Extensions
                 Mathf.Clamp(vector2.x, min, max),
                 Mathf.Clamp(vector2.y, min, max));
         }
-        
+
         /// <summary>
         ///     Transforms a Vector2 to a Vector3 with Unity's (x, z) 2D coordinate system in mind.
         /// </summary>
@@ -121,9 +121,9 @@ namespace Utilities.Extensions
         /// <returns>Chopped Vector3</returns>
         public static Vector3 ChopTo2DVector3(this Vector3 vector3, float y = 0f)
         {
-            return new Vector3(vector3.x, y, vector3.z );
+            return new Vector3(vector3.x, y, vector3.z);
         }
-        
+
         /// <summary> 
         /// Returns the corresponding vector of the given angle (in degrees or radians). This method assumes +X is 0 degrees/radians.
         /// <param name="magnitude"> Desired vector magnitude. </param>
@@ -132,10 +132,10 @@ namespace Utilities.Extensions
         /// <returns>Vector2 from angle</returns>
         public static Vector2 VectorFromAngle(this float angle, UnitType unitType = UnitType.Deg, float magnitude = 1f)
         {
-            var converter = unitType == UnitType.Deg ? Mathf.Deg2Rad : 1;
-            
+            var converter = unitType == UnitType.Deg ? Mathf.Rad2Deg : 1;
+
             return new Vector2(
-                        Mathf.Cos(angle * converter), 
+                        Mathf.Cos(angle * converter),
                         Mathf.Sin(angle * converter)) * magnitude;
         }
 
@@ -148,7 +148,7 @@ namespace Utilities.Extensions
         /// <returns>Angle from Vector2</returns>
         public static float AngleFromVector(this Vector2 vector2, UnitType unitType = UnitType.Deg, float angleOffset = 0f)
         {
-            var converter = unitType == UnitType.Deg ? Mathf.Deg2Rad : 1;
+            var converter = unitType == UnitType.Deg ? Mathf.Rad2Deg : 1;
             return Mathf.Atan2(vector2.y, vector2.x) * converter + angleOffset * converter;
         }
 
@@ -159,8 +159,8 @@ namespace Utilities.Extensions
         /// <returns>Rotated Vector2</returns>
         public static Vector2 RotateByAngle(this ref Vector2 v, float angle, UnitType unitType)
         {
-            var converter = unitType == UnitType.Deg ? Mathf.Deg2Rad : 1;
-            
+            var converter = unitType == UnitType.Deg ? Mathf.Rad2Deg : 1;
+
             v.x = Mathf.Cos((angle + v.AngleFromVector(unitType)) * converter) * v.magnitude;
             v.y = Mathf.Sin((angle + v.AngleFromVector(unitType)) * converter) * v.magnitude;
 
