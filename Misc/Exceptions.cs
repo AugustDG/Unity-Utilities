@@ -1,6 +1,6 @@
 ﻿using System;
 
-namespace Utilities.Exceptions
+namespace UnityUtilities.Exceptions
 {
     public class InvalidTypeException : Exception
     {

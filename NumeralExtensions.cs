@@ -1,7 +1,7 @@
 ﻿using System;
 using UnityEngine;
 
-namespace Utilities.Extensions
+namespace UnityUtilities.Extensions
 {
     public static class NumeralExtensions
     {

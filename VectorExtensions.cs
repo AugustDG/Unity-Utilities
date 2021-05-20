@@ -1,7 +1,8 @@
 ﻿using UnityUtilities;
 using UnityEngine;
+using UnityUtilities.Misc;
 
-namespace Utilities.Extensions
+namespace UnityUtilities.Extensions
 {
     public static class VectorExtensions
     {
@@ -135,8 +136,8 @@ namespace Utilities.Extensions
             var converter = unitType == UnitType.Deg ? Mathf.Rad2Deg : 1;
 
             return new Vector2(
-                        Mathf.Cos(angle * converter),
-                        Mathf.Sin(angle * converter)) * magnitude;
+                Mathf.Cos(angle * converter),
+                Mathf.Sin(angle * converter)) * magnitude;
         }
 
         /// <summary> 
@@ -149,7 +150,7 @@ namespace Utilities.Extensions
         public static float AngleFromVector(this Vector2 vector2, UnitType unitType = UnitType.Deg, float angleOffset = 0f)
         {
             var converter = unitType == UnitType.Deg ? Mathf.Rad2Deg : 1;
-            return Mathf.Atan2(vector2.y, vector2.x) * converter + angleOffset * converter;
+            return Mathf.Atan2(vector2.y, vector2.x) * converter + angleOffset;
         }
 
         /// <summary> 
@@ -157,7 +158,7 @@ namespace Utilities.Extensions
         /// <param name="angle"> In degrees. </param>
         /// </summary>
         /// <returns>Rotated Vector2</returns>
-        public static Vector2 RotateByAngle(this ref Vector2 v, float angle, UnitType unitType)
+        public static Vector2 RotateByAngle(this Vector2 v, float angle, UnitType unitType)
         {
             var converter = unitType == UnitType.Deg ? Mathf.Rad2Deg : 1;
 
@@ -165,6 +166,40 @@ namespace Utilities.Extensions
             v.y = Mathf.Sin((angle + v.AngleFromVector(unitType)) * converter) * v.magnitude;
 
             return v;
+        }
+
+        ///////////////////////////
+        // MISCELLANEOUS SECTION //
+        ///////////////////////////
+
+        /// <summary>
+        /// Transforms a 2-big float array to a Vector 2. 
+        /// </summary>
+        /// <param name="array"></param>
+        /// <returns>Vector2 from array</returns>
+        public static Vector2 ToVector2(this float[] array)
+        {
+            if (array.Length != 2) return Vector2.negativeInfinity;
+
+            return new Vector2(array[0], array[1]);
+        }
+
+        /// <summary>
+        /// Calculates distance between two coordinates.
+        /// </summary>
+        /// <param name="oneVec">One coordinate.</param>
+        /// <param name="anotherVec">Another coordinate.</param>
+        /// <seealso cref="https://stackoverflow.com/a/51839058/12548708"/>
+        /// <returns>Distance in meters.</returns>
+        public static float GeoDistanceTo(this Vector2 oneVec, Vector2 anotherVec)
+        {
+            var d1 = oneVec.x * Mathf.Deg2Rad;
+            var num1 = oneVec.y * Mathf.Deg2Rad;
+            var d2 = anotherVec.x * Mathf.Deg2Rad;
+            var num2 = anotherVec.y * Mathf.Deg2Rad - num1;
+            var d3 = Mathf.Pow(Mathf.Sin((d2 - d1) / 2.0f), 2.0f) + Mathf.Cos(d1) * Mathf.Cos(d2) * Mathf.Pow(Mathf.Sin(num2 / 2.0f), 2.0f);
+
+            return Constants.EarthRadius * (2.0f * Mathf.Atan2(Mathf.Sqrt(d3), Mathf.Sqrt(1.0f - d3)));
         }
     }
 }

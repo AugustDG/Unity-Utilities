@@ -4,7 +4,7 @@ Utilities to improve the C# experience in Unity: ranging from more capabilities 
 
 For now, to use this library, you need to copy the repo (or download it) and build a .dll file in Visual Studio,
 Jetbrains Rider or any .NET IDE, to then add it to your Unity project! Alternatively, you can also copy all the scripts
-in your project :) Don't forget to add the `Utilities` namespace!
+in your project :) Don't forget to add the `UnityUtilities` namespace!
 
 ## Todo
 
@@ -48,6 +48,8 @@ in your project :) Don't forget to add the `Utilities` namespace!
   degrees/radians.
 - `TransformTo2DVector3` > Transforms Vector2 into Vector3 respecting Unity's coordinate system (so x = x, y = 0, z = y).
 - `ChopTo2DVector3` > Takes and returns a Vector3 respecting Unity's coordinate system (so x = x, y = 0 (or specified), z = y).
+- `ToVector2` > Transforms a 2-big float array to a Vector 2.
+- `GeoDistanceTo` > Calculates distance between two coordinates.
 
 # Code Shorteners
 
@@ -57,6 +59,13 @@ in your project :) Don't forget to add the `Utilities` namespace!
 - `DestroyImmediate` > More elegant way of writing DestroyImmediate(gameObject).
 
 ## Log
+
+### Changelog (19-05-2021)
+
+- Removed `ref` keyword (accident, sorry!)
+- Changed all namespaces to `UnityUtilities`
+- Added `ToVector2` to transform 2-big float arrays into a vector 2
+- Added `GeoDistanceTo` to calculate distance between two geocoordinates
 
 ### Changelog (26-04-2021)
 

@@ -3,7 +3,7 @@ using System.Collections;
 using UnityEngine;
 using Object = UnityEngine.Object;
 
-namespace Utilities.Extensions
+namespace UnityUtilities.Extensions
 {
     public static class UnityExtensions
     {
