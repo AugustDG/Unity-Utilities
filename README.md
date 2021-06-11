@@ -51,7 +51,7 @@ in your project :) Don't forget to add the `UnityUtilities` namespace!
 - `ToVector2` > Transforms a 2-big float array to a Vector 2.
 - `GeoDistanceTo` > Calculates distance between two coordinates.
 
-# Code Shorteners
+# Unity
 
 - `Print` > Cleaner way of Debug.Log() with message type support
 - `DelayAction` > Delays supplied action by specified number of seconds (float).
@@ -60,11 +60,16 @@ in your project :) Don't forget to add the `UnityUtilities` namespace!
 
 ## Log
 
+### Changelog (11-06-2021)
+
+- Added `MiscellaneousExtensions` for... miscellaneous extensions like `GeoDistance`!
+- Moved miscellaneous section into its own script ^^!
+
 ### Changelog (19-05-2021)
 
 - Removed `ref` keyword (accident, sorry!)
 - Changed all namespaces to `UnityUtilities`
-- Added `ToVector2` to transform 2-big float arrays into a vector 2
+- Added `ToVector2` to transform float arrays (of size 2) into a vector 2
 - Added `GeoDistanceTo` to calculate distance between two geocoordinates
 
 ### Changelog (26-04-2021)

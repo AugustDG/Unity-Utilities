@@ -41,6 +41,7 @@
     </ItemGroup>
     <ItemGroup>
         <Compile Include="GameobjectExtensions.cs" />
+        <Compile Include="MiscellaneousExtensions.cs" />
         <Compile Include="Misc\Constants.cs" />
         <Compile Include="Misc\Enums.cs" />
         <Compile Include="Misc\Exceptions.cs" />
