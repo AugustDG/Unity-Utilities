@@ -96,9 +96,9 @@ classes to get you up and going if you need them!
 
 ## Changelog
 
-### v0.1.6
+### v0.1.7
 
-- No notable package changes
+- Fixed package structure!
 
 ### v0.1.5
 
