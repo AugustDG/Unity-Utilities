@@ -41,25 +41,25 @@
         </Reference>
     </ItemGroup>
     <ItemGroup>
-        <Compile Include="Code\MovementExtensions.cs" />
-        <Compile Include="Code\MiscellaneousExtensions.cs" />
-        <Compile Include="Code\Misc\Constants.cs" />
-        <Compile Include="Code\Misc\Enums.cs" />
-        <Compile Include="Code\Misc\Exceptions.cs" />
-        <Compile Include="Code\NumeralExtensions.cs" />
-        <Compile Include="Code\Patterns\Singletons\Singleton.cs" />
-        <Compile Include="Code\Patterns\Singletons\SingletonLazy.cs" />
-        <Compile Include="Code\Patterns\Singletons\SingletonPersistent.cs" />
-        <Compile Include="Code\Patterns\Singletons\SingletonService.cs" />
-        <Compile Include="Code\GameObjectExtensions.cs" />
-        <Compile Include="Code\VectorExtensions.cs" />
+        <Compile Include="com.amp.unity-utilities\MovementExtensions.cs" />
+        <Compile Include="com.amp.unity-utilities\MiscellaneousExtensions.cs" />
+        <Compile Include="com.amp.unity-utilities\Misc\Constants.cs" />
+        <Compile Include="com.amp.unity-utilities\Misc\Enums.cs" />
+        <Compile Include="com.amp.unity-utilities\Misc\Exceptions.cs" />
+        <Compile Include="com.amp.unity-utilities\NumeralExtensions.cs" />
+        <Compile Include="com.amp.unity-utilities\Patterns\Singletons\Singleton.cs" />
+        <Compile Include="com.amp.unity-utilities\Patterns\Singletons\SingletonLazy.cs" />
+        <Compile Include="com.amp.unity-utilities\Patterns\Singletons\SingletonPersistent.cs" />
+        <Compile Include="com.amp.unity-utilities\Patterns\Singletons\SingletonService.cs" />
+        <Compile Include="com.amp.unity-utilities\GameObjectExtensions.cs" />
+        <Compile Include="com.amp.unity-utilities\VectorExtensions.cs" />
         <Compile Include="Properties\AssemblyInfo.cs" />
     </ItemGroup>
     <ItemGroup>
-      <Folder Include="Code\Components" />
+      <Folder Include="com.amp.unity-utilities\Components" />
     </ItemGroup>
     <ItemGroup>
-      <Content Include="Code\package.json" />
+      <Content Include="com.amp.unity-utilities\package.json" />
     </ItemGroup>
     <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
     <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
