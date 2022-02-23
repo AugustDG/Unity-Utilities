@@ -38,17 +38,21 @@
         <Reference Include="UnityEngine">
             <HintPath>C:\Program Files\Unity\Hub\Editor\2020.2.7f1\Editor\Data\Managed\UnityEngine.dll</HintPath>
         </Reference>
+        <Reference Include="UnityEngine, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null">
+          <HintPath>C:\Program Files\Unity\Hub\Editor\2021.2.7f1\Editor\Data\Managed\UnityEngine.dll</HintPath>
+        </Reference>
     </ItemGroup>
     <ItemGroup>
+        <Compile Include="Code\GameObjectExtensions.cs" />
+        <Compile Include="Code\MiscellaneousExtensions.cs" />
+        <Compile Include="Code\Misc\Constants.cs" />
+        <Compile Include="Code\Misc\Enums.cs" />
+        <Compile Include="Code\Misc\Exceptions.cs" />
+        <Compile Include="Code\NumeralExtensions.cs" />
+        <Compile Include="Code\UnityExtensions.cs" />
+        <Compile Include="Code\VectorExtensions.cs" />
         <Compile Include="GameobjectExtensions.cs" />
-        <Compile Include="MiscellaneousExtensions.cs" />
-        <Compile Include="Misc\Constants.cs" />
-        <Compile Include="Misc\Enums.cs" />
-        <Compile Include="Misc\Exceptions.cs" />
-        <Compile Include="NumeralExtensions.cs" />
         <Compile Include="Properties\AssemblyInfo.cs" />
-        <Compile Include="UnityExtensions.cs" />
-        <Compile Include="VectorExtensions.cs" />
     </ItemGroup>
     <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
     <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
