@@ -96,7 +96,7 @@ classes to get you up and going if you need them!
 
 ## Changelog
 
-### v0.1.7
+### v0.1.8
 
 - Fixed package structure!
 
