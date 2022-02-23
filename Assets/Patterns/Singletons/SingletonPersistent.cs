@@ -8,22 +8,21 @@ namespace UnityUtilities.Extensions.Patterns
     /// </summary>
     /// <remarks>Inheriting classes must call base.Awake() if overriding Awake!</remarks>
     /// <typeparam name="T">Type.</typeparam>
-    public abstract class SingletonPersistent<T> : MonoBehaviour
+    public abstract class SingletonPersistent<T> : MonoBehaviour where T : Component
     {
         /// <summary>
         /// Static instance.
         /// </summary>
-        public static SingletonPersistent<T> Instance => _instance;
-        private static SingletonPersistent<T> _instance;
-        
+        public static T Instance { get; private set; }
+
         protected virtual void Awake()
         {
-            if ( _instance == null)
+            if ( Instance == null)
             {
-                _instance = this;
-                DontDestroyOnLoad(this);
+                Instance = this as T;
+                DontDestroyOnLoad(this as T);
             }
-            else if (_instance != this)
+            else if (Instance != this as T)
             {
                 gameObject.Destroy();
             }

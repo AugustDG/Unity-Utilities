@@ -8,35 +8,35 @@ namespace UnityUtilities.Extensions.Patterns
     /// </summary>
     /// <remarks>Inheriting classes must call base.Awake() if overriding Awake!</remarks>
     /// <typeparam name="T">Type.</typeparam>
-    public abstract class SingletonLazy<T> : MonoBehaviour
+    public abstract class SingletonLazy<T> : MonoBehaviour where T : Component
     {
         /// <summary>
         /// Static instance.
         /// </summary>
-        public static SingletonLazy<T> Instance
+        public static T Instance
         {
             get
             {
                 if (_instance == null)
                 {
-                    _instance = Instantiate( new GameObject(nameof(T)).AddComponent<SingletonLazy<T>>(), Vector3.zero, Quaternion.identity);
+                    _instance = Instantiate( new GameObject(nameof(T)).AddComponent<T>(), Vector3.zero, Quaternion.identity);
                 }
 
                 return _instance;
             }    
         }
         
-        private static SingletonLazy<T> _instance;
+        private static T _instance;
 
         protected virtual void Awake()
         {
-            if (_instance != this)
+            if (_instance != this as T)
             {
                 gameObject.Destroy();
             }
             else
             {
-                DontDestroyOnLoad(this);
+                DontDestroyOnLoad(this as T);
             }
         }
     }

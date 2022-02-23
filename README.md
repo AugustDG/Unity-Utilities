@@ -96,6 +96,10 @@ classes to get you up and going if you need them!
 
 ## Changelog
 
+### v0.2.0
+
+- Fixed all `Singleton` implementations. 
+
 ### v0.1.9
 
 - Fixed package structure!
