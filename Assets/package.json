@@ -1,0 +1,13 @@
+{
+  "name": "com.amp.unityutilities",
+  "displayName": "Unity Utilities",
+  "version": "v0.1.7",
+  "unity": "2020.3",
+  "author": {
+    "name": "Augusto Mota Pinheiro",
+    "email": "augustomp55@gmail.com",
+    "url": "https://augustopinheiro.ca"
+  },
+  "description": "Utilities to improve the C# experience in Unity: ranging from more capabilities to shorter code length!",
+  "license": "MIT"
+}
