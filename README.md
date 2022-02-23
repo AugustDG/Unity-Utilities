@@ -96,6 +96,10 @@ classes to get you up and going if you need them!
 
 ## Changelog
 
+### v0.1.6
+
+- No notable package changes
+
 ### v0.1.5
 
 - Added `ToVector3` to transform a 3-big float array to a _Vector3_.
