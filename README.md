@@ -77,6 +77,11 @@ classes to get you up and going if you need them!
 
 ## Changelog
 
+### v0.1.3
+
+- Submitted package to [open upm](https://openupm.com/)!
+- Some refactoring too!
+
 ### v0.1.2
 
 Long time no see... Sorry, about that!
