@@ -7,10 +7,11 @@
         <ProjectGuid>{05543BB2-461E-494A-8480-5FA19AAFDECE}</ProjectGuid>
         <OutputType>Library</OutputType>
         <AppDesignerFolder>Properties</AppDesignerFolder>
-        <RootNamespace>Unity_Utilities</RootNamespace>
-        <AssemblyName>Unity_Utilities</AssemblyName>
+        <RootNamespace>UnityUtilities</RootNamespace>
+        <AssemblyName>UnityUtilities</AssemblyName>
         <TargetFrameworkVersion>v4.8</TargetFrameworkVersion>
         <FileAlignment>512</FileAlignment>
+        <LangVersion>8</LangVersion>
     </PropertyGroup>
     <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
         <PlatformTarget>AnyCPU</PlatformTarget>
@@ -35,24 +36,30 @@
         <Reference Include="System" />
         <Reference Include="System.Core" />
         <Reference Include="System.Xml" />
-        <Reference Include="UnityEngine">
-            <HintPath>C:\Program Files\Unity\Hub\Editor\2020.2.7f1\Editor\Data\Managed\UnityEngine.dll</HintPath>
-        </Reference>
         <Reference Include="UnityEngine, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null">
           <HintPath>C:\Program Files\Unity\Hub\Editor\2021.2.7f1\Editor\Data\Managed\UnityEngine.dll</HintPath>
         </Reference>
     </ItemGroup>
     <ItemGroup>
-        <Compile Include="Code\GameObjectExtensions.cs" />
+        <Compile Include="Code\MovementExtensions.cs" />
         <Compile Include="Code\MiscellaneousExtensions.cs" />
         <Compile Include="Code\Misc\Constants.cs" />
         <Compile Include="Code\Misc\Enums.cs" />
         <Compile Include="Code\Misc\Exceptions.cs" />
         <Compile Include="Code\NumeralExtensions.cs" />
-        <Compile Include="Code\UnityExtensions.cs" />
+        <Compile Include="Code\Patterns\Singletons\Singleton.cs" />
+        <Compile Include="Code\Patterns\Singletons\SingletonLazy.cs" />
+        <Compile Include="Code\Patterns\Singletons\SingletonPersistent.cs" />
+        <Compile Include="Code\Patterns\Singletons\SingletonService.cs" />
+        <Compile Include="Code\GameObjectExtensions.cs" />
         <Compile Include="Code\VectorExtensions.cs" />
-        <Compile Include="GameobjectExtensions.cs" />
         <Compile Include="Properties\AssemblyInfo.cs" />
+    </ItemGroup>
+    <ItemGroup>
+      <Folder Include="Code\Components" />
+    </ItemGroup>
+    <ItemGroup>
+      <Content Include="Code\package.json" />
     </ItemGroup>
     <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
     <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

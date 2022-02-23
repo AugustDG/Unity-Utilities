@@ -1,205 +1,65 @@
-﻿using UnityEngine;
+﻿using System;
+using System.Collections;
+using UnityEngine;
 
 namespace UnityUtilities.Extensions
 {
     public static class GameObjectExtensions
     {
         /// <summary> 
-        /// More elegant way of writing Destroy(gameObject).
+        /// Delays action by specified number of seconds.
+        /// <param name="monoBehaviour"><see cref="MonoBehaviour"/> to piggyback the <see cref="Coroutine"/> from.</param>
+        /// <param name="delayedAction">Action to call after delay.</param>
+        /// <param name="timeInSec">How many realtime seconds will be waiting.</param>
         /// </summary>
-        public static void Destroy(this GameObject go)
+        public static Coroutine DelayAction(MonoBehaviour monoBehaviour, Action delayedAction, float timeInSec)
         {
-            Object.Destroy(go);
+            IEnumerator DelayActionRoutine()
+            {
+                yield return new WaitForSecondsRealtime(timeInSec);
+            
+                delayedAction.Invoke();
+            }
+
+            return monoBehaviour.StartCoroutine(DelayActionRoutine());
         }
         
-        /// <summary> 
-        /// More elegant way of writing DestroyImmediate(gameObject).
-        /// For use in the Editor only!
+        /// <summary>
+        /// Checks if the animator is currently playing an animation.
+        /// See this <a href="https://answers.unity.com/questions/362629/how-can-i-check-if-an-animation-is-being-played-or.html">Unity Forum</a> post for more information.
         /// </summary>
-        public static void DestroyImmediate(this GameObject go)
+        /// <param name="animator">Animator to be checked.</param>
+        /// <returns>True if it's playing; false otherwise.</returns>
+        public static bool IsAnimatorPlaying(this Animator animator)
         {
-            Object.DestroyImmediate(go);
+            return animator.GetCurrentAnimatorStateInfo(0).length >
+                animator.GetCurrentAnimatorStateInfo(0).normalizedTime;
         }
 
-        /// <summary> 
-        /// Smoothly makes the Rigidbody2D follow the current mouse position.
-        /// Should be used in FixedUpdate (recommended).
-        /// <param name="speed">Follow speed.</param>
-        /// <param name="rotateSpeed">Turning speed.</param>
+        /// <summary>
+        /// Writes the object to the Debug Console.
         /// </summary>
-        public static void FollowMouse2D(this Rigidbody2D rb, float speed = 5f, float rotateSpeed = 200f)
+        /// <param name="msg">Object to be logged.</param>
+        /// <param name="type">Type of log.</param>
+        /// <returns></returns>
+        public static void Print(this object msg, LogType type = LogType.Log)
         {
-            // Homing behaviour from: https://github.com/Brackeys/Homing-Missile/blob/master/Homing%20Missile/Assets/HomingMissile.cs
-
-            var direction = (Vector2) Camera.current.ScreenToWorldPoint(Input.mousePosition) - rb.position;
-
-            var localUp = rb.transform.up;
-
-            direction.Normalize();
-
-            var rotateAmount = Vector3.Cross(direction, localUp).z;
-
-            rb.angularVelocity = -rotateAmount * rotateSpeed;
-
-            rb.velocity = localUp * speed;
-        }
-
-        /// <summary> 
-        /// Smoothly makes the Rigidbody2D follow the specified GameObject.
-        /// Should be used in FixedUpdate (recommended).
-        /// <param name="go">GameObject to follow.</param>
-        /// <param name="speed">Follow speed.</param>
-        /// <param name="rotateSpeed">Turning speed.</param>
-        /// </summary>
-        public static void FollowObject2D(this Rigidbody2D rb, GameObject go, float speed = 5f,
-            float rotateSpeed = 200f)
-        {
-            // Homing behaviour from: https://github.com/Brackeys/Homing-Missile/blob/master/Homing%20Missile/Assets/HomingMissile.cs
-
-            var direction = (Vector2) go.transform.position - rb.position;
-
-            var localUp = rb.transform.up;
-
-            direction.Normalize();
-
-            var rotateAmount = Vector3.Cross(direction, localUp).z;
-
-            rb.angularVelocity = -rotateAmount * rotateSpeed;
-
-            rb.velocity = localUp * speed;
-        }
-
-        /// <summary> 
-        /// Smoothly makes the Rigidbody2D follow the specified transform.
-        /// Should be used in FixedUpdate (recommended).
-        /// <param name="trans">Transform to follow.</param>
-        /// <param name="speed">Follow speed.</param>
-        /// <param name="rotateSpeed">Turning speed.</param>
-        /// </summary>
-        public static void FollowObject2D(this Rigidbody2D rb, Transform trans, float speed = 5f,
-            float rotateSpeed = 200f)
-        {
-            // Homing behaviour from: https://github.com/Brackeys/Homing-Missile/blob/master/Homing%20Missile/Assets/HomingMissile.cs
-
-            var direction = (Vector2) trans.position - rb.position;
-
-            var localUp = rb.transform.up;
-
-            direction.Normalize();
-
-            var rotateAmount = Vector3.Cross(direction, localUp).z;
-
-            rb.angularVelocity = -rotateAmount * rotateSpeed;
-
-            rb.velocity = localUp * speed;
-        }
-
-        /// <summary> 
-        /// Smoothly translates the GameObject up. 
-        /// <param name="speed">Speed of translation.</param>
-        /// </summary>
-        public static void GoUp(this GameObject go, float speed = 1f, Space relativeTo = Space.World)
-        {
-            go.transform.Translate(Vector3.up * Time.deltaTime * speed, relativeTo);
-        }
-
-        /// <summary> 
-        /// Smoothly translates the GameObject down.
-        /// <param name="speed">Speed of translation.</param>
-        /// </summary>
-        public static void GoDown(this GameObject go, float speed = 1f, Space relativeTo = Space.World)
-        {
-            go.transform.Translate(Vector3.down * Time.deltaTime * speed, Space.World);
-        }
-
-        /// <summary> 
-        /// Smoothly translates the GameObject left.
-        /// <param name="speed">Speed of translation.</param>
-        /// </summary>
-        public static void GoLeft(this GameObject go, float speed = 1f, Space relativeTo = Space.World)
-        {
-            go.transform.Translate(Vector3.left * Time.deltaTime * speed, relativeTo);
-        }
-
-        /// <summary> 
-        /// Smoothly translates the GameObject right.
-        /// <param name="speed">Speed of translation.</param>
-        /// </summary>
-        public static void GoRight(this GameObject go, float speed = 1f, Space relativeTo = Space.World)
-        {
-            go.transform.Translate(Vector3.right * Time.deltaTime * speed, relativeTo);
-        }
-
-        /// <summary> 
-        /// Smoothly translates the GameObject forwards.
-        /// <param name="speed">Speed of translation.</param>
-        /// </summary>
-        public static void GoForward(this GameObject go, float speed = 1f, Space relativeTo = Space.World)
-        {
-            go.transform.Translate(Vector3.forward * Time.deltaTime * speed, relativeTo);
-        }
-
-        /// <summary> 
-        /// Smoothly translates the GameObject backwards.
-        /// <param name="speed">Speed of translation.</param>
-        /// </summary>
-        public static void GoBackward(this GameObject go, float speed = 1f, Space relativeTo = Space.World)
-        {
-            go.transform.Translate(Vector3.back * Time.deltaTime * speed, relativeTo);
-        }
-        
-        /// <summary> 
-        /// Smoothly translates the Transform up. 
-        /// <param name="speed">Speed of translation.</param>
-        /// </summary>
-        public static void GoUp(this Transform trans, float speed = 1f, Space relativeTo = Space.World)
-        {
-            trans.Translate(Vector3.up * Time.deltaTime * speed, relativeTo);
-        }
-
-        /// <summary> 
-        /// Smoothly translates the Transform down.
-        /// <param name="speed">Speed of translation.</param>
-        /// </summary>
-        public static void GoDown(this Transform trans, float speed = 1f, Space relativeTo = Space.World)
-        {
-            trans.transform.Translate(Vector3.down * Time.deltaTime * speed, relativeTo);
-        }
-
-        /// <summary> 
-        /// Smoothly translates the Transform left.
-        /// <param name="speed">Speed of translation.</param>
-        /// </summary>
-        public static void GoLeft(this Transform trans, float speed = 1f, Space relativeTo = Space.World)
-        {
-            trans.transform.Translate(Vector3.left * Time.deltaTime * speed, relativeTo);
-        }
-
-        /// <summary> 
-        /// Smoothly translates the Transform right.
-        /// <param name="speed">Speed of translation.</param>
-        /// </summary>
-        public static void GoRight(this Transform trans, float speed = 1f, Space relativeTo = Space.World)
-        {
-            trans.transform.Translate(Vector3.right * Time.deltaTime * speed, relativeTo);
-        }
-
-        /// <summary> 
-        /// Smoothly translates the Transform forwards.
-        /// <param name="speed">Speed of translation.</param>
-        /// </summary>
-        public static void GoForward(this Transform trans, float speed = 1f, Space relativeTo = Space.World)
-        {
-            trans.transform.Translate(Vector3.forward * Time.deltaTime * speed, relativeTo);
-        }
-
-        /// <summary> 
-        /// Smoothly translates the Transform backwards.
-        /// <param name="speed">Speed of translation.</param>
-        /// </summary>
-        public static void GoBackward(this Transform trans, float speed = 1f, Space relativeTo = Space.World)
-        {
-            trans.transform.Translate(Vector3.back * Time.deltaTime * speed, relativeTo);
+            switch (type)
+            {
+                case LogType.Log:
+                    Debug.Log(msg);
+                    break;
+                case LogType.Warning:
+                    Debug.LogWarning(msg);
+                    break;
+                case LogType.Exception:
+                case LogType.Error:
+                    Debug.LogError(msg);
+                    break;
+                case LogType.Assert:
+                    Debug.LogAssertion(msg);
+                    break;
+            }
         }
     }
 }
