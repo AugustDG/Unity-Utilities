@@ -1,12 +1,25 @@
 # Unity Utilities
 
+[![openupm](https://img.shields.io/npm/v/com.amp.unityutilities?label=openupm&registry_uri=https://package.openupm.com)](https://openupm.com/packages/com.amp.unityutilities/)
+
 Utilities to improve the C# experience in Unity: ranging from more capabilities to shorter code length!
 
 For now, to use this library, you need to copy the repo (or download it) and build a .dll file in Visual Studio,
 Jetbrains Rider or any .NET IDE, to then add it to your Unity project! Alternatively, you can also copy all the scripts
 in your project :) Don't forget to add the `UnityUtilities` namespace!
 
-## C# Version
+### OpenUPM
+
+You can now install this as an UPM packge through OpenUPM! Here's the package [page](https://openupm.com/packages/com.amp.unityutilities/#) :D
+
+Just open a terminal within your project and type:
+```commandline
+openupm add com.amp.unityutilities
+```
+
+or, manually install it through the package manager like [this](https://openupm.com/packages/com.amp.unityutilities/#modal-manualinstallation)!
+
+### C# Version
 
 Currently frozen at [#8.0](https://docs.microsoft.com/en-us/dotnet/csharp/whats-new/csharp-8) for backwards compability
 with `Unity 2020.2` and above!
@@ -76,6 +89,11 @@ classes to get you up and going if you need them!
 - `DestroyImmediate` &rarr; More elegant way of writing _DestroyImmediate(gameObject)_.
 
 ## Changelog
+
+### v0.1.4
+
+- Submitted package to [open upm](https://openupm.com/): it's now approved!
+- Added required `.meta` files!
 
 ### v0.1.3
 
