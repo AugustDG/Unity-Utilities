@@ -1,6 +1,6 @@
 # Unity Utilities
 
-Utilities to improve the C# experience in Unity: ranging from more capabilities to shorter code length.
+Utilities to improve the C# experience in Unity: ranging from more capabilities to shorter code length!
 
 For now, to use this library, you need to copy the repo (or download it) and build a .dll file in Visual Studio,
 Jetbrains Rider or any .NET IDE, to then add it to your Unity project! Alternatively, you can also copy all the scripts
@@ -77,7 +77,7 @@ classes to get you up and going if you need them!
 
 ## Changelog
 
-### 23-02-2022
+### v0.1.2
 
 Long time no see... Sorry, about that!
 

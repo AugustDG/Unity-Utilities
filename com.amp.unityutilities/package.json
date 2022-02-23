@@ -1,0 +1,11 @@
+﻿{
+  "name": "unityutilities",
+  "version": "0.1.2",
+  "author": {
+    "name": "Augusto Mota Pinheiro",
+    "email": "augustomp55@gmail.com",
+    "url": "https://augustopinheiro.ca"
+  },
+  "description": "Utilities to improve the C# experience in Unity: ranging from more capabilities to shorter code length!",
+  "license": "MIT License"
+}
