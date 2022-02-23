@@ -1,11 +1,29 @@
 ﻿using System;
 using System.Collections;
 using UnityEngine;
+using Object = UnityEngine.Object;
 
 namespace UnityUtilities.Extensions
 {
     public static class GameObjectExtensions
     {
+        /// <summary> 
+        /// More elegant way of writing Destroy(gameObject).
+        /// </summary>
+        public static void Destroy(this GameObject go)
+        {
+            Object.Destroy(go);
+        }
+        
+        /// <summary> 
+        /// More elegant way of writing DestroyImmediate(gameObject).
+        /// For use in the Editor only!
+        /// </summary>
+        public static void DestroyImmediate(this GameObject go)
+        {
+            Object.DestroyImmediate(go);
+        }
+        
         /// <summary> 
         /// Delays action by specified number of seconds.
         /// <param name="monoBehaviour"><see cref="MonoBehaviour"/> to piggyback the <see cref="Coroutine"/> from.</param>

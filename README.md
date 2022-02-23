@@ -78,6 +78,8 @@ classes to get you up and going if you need them!
 - `ChopTo2DVector3` &rarr; Takes and returns a _Vector3_ respecting Unity's coordinate system (so x = x, y = 0 (or
   specified), z = y).
 - `ToVector2` &rarr; Transforms a 2-big float array to a _Vector2_.
+- `ToVector3` &rarr; Transforms a 3-big float array to a _Vector3_.
+- `ToArray` &rarr; Transforms a _Vector3_ or _Vector2_ to a 3-big or 2-big float array, respectively.
 - `GeoDistanceTo` &rarr; Calculates distance between two coordinates.
 
 ### GameObject
@@ -88,7 +90,18 @@ classes to get you up and going if you need them!
 - `Destroy` &rarr; More elegant way of writing _Destroy(gameObject)_.
 - `DestroyImmediate` &rarr; More elegant way of writing _DestroyImmediate(gameObject)_.
 
+### Miscelleanous
+
+- `Flip` &rarr; Flips a 2-big float array, so that the values swap indexes.
+
 ## Changelog
+
+### v0.1.5
+
+- Added `ToVector3` to transform a 3-big float array to a _Vector3_.
+- Added `Flip` to flip a 2-big float array, so that the values swap indexes.
+- Added `ToArray` to transform a _Vector3_ or _Vector2_ to a 3-big or 2-big float array, respectively.
+- Some refactoring!
 
 ### v0.1.4
 

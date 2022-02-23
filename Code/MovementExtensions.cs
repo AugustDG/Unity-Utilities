@@ -5,23 +5,6 @@ namespace UnityUtilities.Extensions
     public static class MovementExtensions
     {
         /// <summary> 
-        /// More elegant way of writing Destroy(gameObject).
-        /// </summary>
-        public static void Destroy(this GameObject go)
-        {
-            Object.Destroy(go);
-        }
-        
-        /// <summary> 
-        /// More elegant way of writing DestroyImmediate(gameObject).
-        /// For use in the Editor only!
-        /// </summary>
-        public static void DestroyImmediate(this GameObject go)
-        {
-            Object.DestroyImmediate(go);
-        }
-
-        /// <summary> 
         /// Smoothly makes the Rigidbody2D follow the current mouse position.
         /// Should be used in FixedUpdate (recommended).
         /// <param name="speed">Follow speed.</param>
