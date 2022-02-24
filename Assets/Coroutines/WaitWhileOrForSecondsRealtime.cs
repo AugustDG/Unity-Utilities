@@ -11,7 +11,7 @@ namespace Extensions
         public WaitForSecondsRealtime WaitForSecondsRealtime { get; }
         public WaitWhile WaitWhile { get; }
 
-        public override bool keepWaiting => WaitForSecondsRealtime.keepWaiting || WaitWhile.keepWaiting;
+        public override bool keepWaiting => WaitForSecondsRealtime.keepWaiting && WaitWhile.keepWaiting;
 
         public WaitWhileOrForSecondsRealtime(WaitWhile waitWhile, WaitForSecondsRealtime waitForSecondsRealtime)
         {

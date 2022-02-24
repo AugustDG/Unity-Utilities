@@ -103,6 +103,11 @@ classes to get you up and going if you need them!
 
 ## Changelog
 
+### v0.3.2
+
+- Fixed `Coroutine`-related classes
+- Will implement testing soon to avoid fixes...
+
 ### v0.3.1
 
 - Moved `DelayAction` to its own file
