@@ -41,6 +41,13 @@ classes to get you up and going if you need them!
 - `SingletonLazy` &rarr; Generic lazy singleton class, made for _MonoBehaviours_. Creates itself, if it doesn't exist.
 - `SingletonService` &rarr; A newer kind of a C# (doesn't interact with Unity) _Singleton_, only accessible through method calls. Mainly used for services.
 
+## Coroutines
+
+- `WaitUntilAndForSecondsRealtime` &rarr; Suspends the coroutine execution for the given amount of seconds using unscaled time and until the passed condition is true.
+- `WaitUntilOrForSecondsRealtime` &rarr; Suspends the coroutine execution for the given amount of seconds using unscaled time or until the passed condition is true.
+- `WaitWhileAndForSecondsRealtime` &rarr; Suspends the coroutine execution for the given amount of seconds using unscaled time and while the passed condition is true.
+- `WaitWhileOrForSecondsRealtime` &rarr; Suspends the coroutine execution for the given amount of seconds using unscaled time or while the passed condition is true.
+
 ## Extensions
 
 ### Numerals
@@ -95,6 +102,14 @@ classes to get you up and going if you need them!
 - `Flip` &rarr; Flips a 2-big float array, so that the values swap indexes.
 
 ## Changelog
+
+### v0.3.0
+
+- Added the following `Coroutine`-related classes:
+  - `WaitUntilAndForSecondsRealtime`
+  - `WaitUntilOrForSecondsRealtime` 
+  - `WaitWhileAndForSecondsRealtime`
+  - `WaitWhileOrForSecondsRealtime` 
 
 ### v0.2.0
 
