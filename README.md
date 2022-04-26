@@ -89,6 +89,15 @@ classes to get you up and going if you need them!
 - `ToArray` &rarr; Transforms a _Vector3_ or _Vector2_ to a 3-big or 2-big float array, respectively.
 - `GeoDistanceTo` &rarr; Calculates distance between two coordinates.
 
+### Quaternions
+
+- `AverageQuaternions` &rarr; Returns the average of the _Quaternions_.
+- `AverageQuaternionsFast` &rarr; Returns the average of the _Quaternions_, without normalizing to save on speed.
+- `Normalize` &rarr; Normalizes the _Quaternion_.
+- `InverseSign` &rarr; Inverses the sign of the _Quaternion_.
+- `IsClose` &rarr; Checks if the _Quaternion_ is close to the given one.
+- `Scale` &rarr; Scales the _Quaternion_.
+
 ### GameObject
 
 - `Print` &rarr; Cleaner way of _Debug.Log()_ with log type support
@@ -102,6 +111,17 @@ classes to get you up and going if you need them!
 - `Flip` &rarr; Flips a 2-big float array, so that the values swap indexes.
 
 ## Changelog
+
+### v0.4.0
+
+- Fixed namespace for `Coroutines` extensions
+- Added `Quaternion` extension methods, more specifally:
+  - `AverageQuaternions`
+  - `AverageQuaternionsFast` 
+  - `Normalize` 
+  - `InverseSign` 
+  - `IsClose` 
+  - `Scale`
 
 ### v0.3.2
 

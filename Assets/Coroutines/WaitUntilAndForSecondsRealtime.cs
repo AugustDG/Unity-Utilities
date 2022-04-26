@@ -1,7 +1,7 @@
 ﻿using System;
 using UnityEngine;
 
-namespace Extensions
+namespace UnityUtilities.Extensions
 {
     /// <summary>
     /// Suspends the coroutine execution for the given amount of seconds using unscaled time and until the passed condition is true.
