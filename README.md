@@ -113,11 +113,19 @@ classes to get you up and going if you need them!
 - `LogWarning` &rarr; Logs a warning to the console with the object's name.
 - `LogError` &rarr; Logs an error to the console with the object's name.
 
+- `static Log` &rarr; Logs a message to the console with the passed object's name.
+- `static LogWarning` &rarr; Logs a warning to the console with the passed object's name.
+- `static LogError` &rarr; Logs an error to the console with the passed object's name.
+
 ### Miscelleanous
 
 - `Flip` &rarr; Flips a 2-big float array, so that the values swap indexes.
 
 ## Changelog
+
+### v0.4.3
+
+- Duplicated `CustomBehaviour` logging methods and made them static (for non-MonoBehaviours).
 
 ### v0.4.2
 
