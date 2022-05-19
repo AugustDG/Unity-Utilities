@@ -107,11 +107,21 @@ classes to get you up and going if you need them!
 - `Destroy` &rarr; More elegant way of writing _Destroy(gameObject)_.
 - `DestroyImmediate` &rarr; More elegant way of writing _DestroyImmediate(gameObject)_.
 
+### MonoBehaviour
+
+- `Log` &rarr; Logs a message to the console with the object's name.
+- `LogWarning` &rarr; Logs a warning to the console with the object's name.
+- `LogError` &rarr; Logs an error to the console with the object's name.
+
 ### Miscelleanous
 
 - `Flip` &rarr; Flips a 2-big float array, so that the values swap indexes.
 
 ## Changelog
+
+### v0.4.2
+
+- Made `CustomBehaviour` logging methods public.
 
 ### v0.4.1
 
