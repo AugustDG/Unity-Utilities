@@ -25,7 +25,7 @@ namespace UnityUtilities.Extensions
             if (!newRotation.IsClose(firstRotation)) newRotation.InverseSign();
 
             var avgQ = new Quaternion();
-            
+
             //Average the values
             var addDet = 1f / addAmount;
             cumulative.w += newRotation.w;
@@ -63,7 +63,7 @@ namespace UnityUtilities.Extensions
 
             //Average the values
             var avgQ = new Quaternion();
-            
+
             //Average the values
             var addDet = 1f / addAmount;
             cumulative.w += newRotation.w;
@@ -74,7 +74,7 @@ namespace UnityUtilities.Extensions
             avgQ.y = cumulative.y * addDet;
             cumulative.z += newRotation.z;
             avgQ.z = cumulative.z * addDet;
-            
+
             return avgQ;
         }
 
@@ -85,9 +85,16 @@ namespace UnityUtilities.Extensions
         /// <returns>Normalized quaternion.</returns>
         public static void Normalize(this ref Quaternion q)
         {
-            var lengthD = 1.0f / (q.w * q.w + q.x * q.x + q.y * q.y + q.z * q.z);
-
-            q.Scale(lengthD);
+            q = Quaternion.Normalize(q);
+        }
+        
+        /// <summary>
+        /// Inverses the quaternion.
+        /// </summary>
+        /// <param name="q">Quaternion to inverse</param>
+        public static void Inverse(this ref Quaternion q)
+        {
+            q = Quaternion.Inverse(q);
         }
 
         /// <summary>
@@ -115,7 +122,7 @@ namespace UnityUtilities.Extensions
             else
                 return true;
         }
-        
+
         /// <summary>
         /// Multiplies this quaternion with the given scalar.
         /// </summary>

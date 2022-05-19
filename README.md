@@ -94,6 +94,7 @@ classes to get you up and going if you need them!
 - `AverageQuaternions` &rarr; Returns the average of the _Quaternions_.
 - `AverageQuaternionsFast` &rarr; Returns the average of the _Quaternions_, without normalizing to save on speed.
 - `Normalize` &rarr; Normalizes the _Quaternion_.
+- `Inverse` &rarr; Inverses the _Quaternion_.
 - `InverseSign` &rarr; Inverses the sign of the _Quaternion_.
 - `IsClose` &rarr; Checks if the _Quaternion_ is close to the given one.
 - `Scale` &rarr; Scales the _Quaternion_.
@@ -111,6 +112,12 @@ classes to get you up and going if you need them!
 - `Flip` &rarr; Flips a 2-big float array, so that the values swap indexes.
 
 ## Changelog
+
+### v0.4.1
+
+- Added `Inverse` method to `Quaternion` extensions.
+- Added `CustomBehaviour` class, extending the basic _MonoBehaviour_.
+  - Changed all `Singleton` classes extending `CustomBehaviour` classes.
 
 ### v0.4.0
 

@@ -8,7 +8,7 @@ namespace UnityUtilities.Extensions.Patterns
     /// </summary>
     /// <remarks>Inheriting classes must call base.Awake() if overriding Awake!</remarks>
     /// <typeparam name="T">Type.</typeparam>
-    public abstract class SingletonPersistent<T> : MonoBehaviour where T : Component
+    public abstract class SingletonPersistent<T> : CustomBehaviour where T : CustomBehaviour
     {
         /// <summary>
         /// Static instance.
