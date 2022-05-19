@@ -107,7 +107,7 @@ classes to get you up and going if you need them!
 - `Destroy` &rarr; More elegant way of writing _Destroy(gameObject)_.
 - `DestroyImmediate` &rarr; More elegant way of writing _DestroyImmediate(gameObject)_.
 
-### MonoBehaviour
+### CustomBehaviour
 
 - `Log` &rarr; Logs a message to the console with the object's name.
 - `LogWarning` &rarr; Logs a warning to the console with the object's name.
@@ -127,6 +127,10 @@ classes to get you up and going if you need them!
 
 - Added `Inverse` method to `Quaternion` extensions.
 - Added `CustomBehaviour` class, extending the basic _MonoBehaviour_.
+  - Added `Log`
+  - Added `LogWarning`
+  - Added `LogError`
+  
   - Changed all `Singleton` classes extending `CustomBehaviour` classes.
 
 ### v0.4.0
