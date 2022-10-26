@@ -31,7 +31,7 @@ namespace UnityUtilities.Extensions
         /// </summary>
         /// <param name="caller">Object calling the logger.</param>
         /// <param name="message">Message to be logged.</param>
-        public static void LogWarning(object caller, object message) => Debug.Log(caller.GetType().Name + $": {message}");
+        public static void LogWarning(object caller, object message) => Debug.LogWarning(caller.GetType().Name + $": {message}");
         
         /// <summary>
         /// Logs an error to the console with the object's name.
@@ -44,6 +44,6 @@ namespace UnityUtilities.Extensions
         /// </summary>
         /// <param name="caller">Object calling the logger.</param>
         /// <param name="message">Message to be logged.</param>
-        public static void LogError(object caller, object message) => Debug.Log(caller.GetType().Name + $": {message}");
+        public static void LogError(object caller, object message) => Debug.LogError(caller.GetType().Name + $": {message}");
     }
 }

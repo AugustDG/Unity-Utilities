@@ -22,7 +22,7 @@ or, manually install it through the package manager like [this](https://openupm.
 ### C# Version
 
 Currently frozen at [#8.0](https://docs.microsoft.com/en-us/dotnet/csharp/whats-new/csharp-8) for backwards compability
-with `Unity 2020.2` and above!
+with `Unity 2020.3` and above!
 
 ## Patterns
 
@@ -122,6 +122,10 @@ classes to get you up and going if you need them!
 - `Flip` &rarr; Flips a 2-big float array, so that the values swap indexes.
 
 ## Changelog
+
+### v0.4.4
+
+- Fixed `CustomBehaviour` logging methods.
 
 ### v0.4.3
 
